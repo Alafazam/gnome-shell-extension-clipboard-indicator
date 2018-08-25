@@ -58,10 +58,10 @@ const App = new Lang.Class({
                 step_increment: 100
             })
         });
-        this.field_size = new Gtk.SpinButton({
+        this.history_size new Gtk.SpinButton({
             adjustment: new Gtk.Adjustment({
                 lower: 1,
-                upper: 50,
+                upper: 10000,
                 step_increment: 1
             })
         });
@@ -176,7 +176,7 @@ const App = new Lang.Class({
         this.main.attach(topbarPreviewLabel , 2, 8, 2 ,1);
         this.main.attach(keybindingLabel    , 2, 9, 2 ,1);
 
-        this.main.attach(this.field_size                   , 4, 1, 2, 1);
+        this.main.attach(this.history_size                 , 4, 1, 2, 1);
         this.main.attach(this.field_preview_size           , 4, 2, 2, 1);
         this.main.attach(this.field_interval               , 4, 3, 2, 1);
         this.main.attach(this.field_cache_size             , 4, 4, 2, 1);
@@ -189,7 +189,7 @@ const App = new Lang.Class({
         this.main.attach(this.field_keybinding             , 2, 10, 4, 2);
 
         SettingsSchema.bind(Fields.INTERVAL, this.field_interval, 'value', Gio.SettingsBindFlags.DEFAULT);
-        SettingsSchema.bind(Fields.HISTORY_SIZE, this.field_size, 'value', Gio.SettingsBindFlags.DEFAULT);
+        SettingsSchema.bind(Fields.HISTORY_SIZE, this.history_size, 'value', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.PREVIEW_SIZE, this.field_preview_size, 'value', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.CACHE_FILE_SIZE, this.field_cache_size, 'value', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.CACHE_ONLY_FAVORITE, this.field_cache_disable, 'active', Gio.SettingsBindFlags.DEFAULT);
